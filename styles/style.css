@@ -159,6 +159,21 @@
   text-shadow: 0 0 1px var(--main-background-color);
 }
 
+@supports (
+  (
+      (text-stroke: 1px var(--main-background-color)) or
+        (-webkit-text-stroke: 1px var(--main-background-color))
+    )
+    and (mix-blend-mode: hard-light)
+) {
+  .label {
+    text-shadow: none;
+    -webkit-text-stroke: 1px var(--main-background-color);
+    mix-blend-mode: hard-light;
+    text-stroke: 1px var(--themes-backgroud-color);
+  }
+}
+
 .card__description {
   display: flex;
   flex-direction: column;
