@@ -25,7 +25,7 @@
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-  font-variation-settings: var(--font-weight-text);
+  font-variation-settings: "wght" var(--font-weight-text);
 }
 
 .header {
