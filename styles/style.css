@@ -29,7 +29,6 @@
 }
 
 .header {
-  min-height: 364px;
   margin-bottom: 100px;
   background-color: var(--main-background-color);
   border: 2px solid var(--accent-color);
@@ -39,28 +38,35 @@
   align-items: center;
   gap: 23px;
   padding: clamp(7.5rem, 7.1479rem + 1.5023vw, 8.5rem) 0 25px 0;
+  font-family: var(--font-accent);
 }
 
-.text {
-  color: var(--accent-color);
-  font-family: var(--font-accent);
+.header__logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.header__title {
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
   text-transform: uppercase;
 }
 
-.title {
-  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+.header__title:focus {
+  outline: none;
 }
 
-.subtitle {
+.header__subtitle {
   font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+  text-transform: uppercase;
 }
 
 .theme-menu__list {
-  padding-left: 14px;
-  height: 70px;
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 11px;
+  padding-left: 18px;
 }
 
 .theme-menu__item {
@@ -74,6 +80,22 @@
   font-size: 14px;
   background: transparent;
   border: none;
+  transition: opacity 0.3s ease;
+  padding: 1px 0;
+  position: relative;
+  cursor: pointer;
+}
+
+.theme-menu__button::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  display: block;
+  width: 0%;
+  height: 2px;
+  background-color: var(--accent-color);
+  transition: width 0.5s ease-in-out;
 }
 
 .theme-menu__button:focus-within {
@@ -87,7 +109,6 @@
 
 .theme-menu__button:hover {
   opacity: 0.6;
-  transition: opacity 0.3s;
 }
 
 .theme-menu__button:disabled {
@@ -98,12 +119,9 @@
 .theme-menu__button:disabled::before {
   content: "▶";
   position: absolute;
-  right: 100px;
-  animation-name: menu-animation;
-  animation-duration: 0.5s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
-  animation-direction: alternate;
+  top: 0;
+  left: -20px;
+  animation: menu-animation 0.5s infinite ease-in-out alternate;
 }
 
 .content {
@@ -121,6 +139,7 @@
   color: var(--accent-color);
   padding: 5px 10px;
   font-size: 18px;
+  font-variation-settings: "wght" var(--font-weight-title);
 }
 
 .card__content {
@@ -168,7 +187,7 @@
   display: flex;
   flex-direction: column;
   gap: 27px;
-  padding: 25px;
+  padding: 26px;
   padding-bottom: 22px;
 }
 
@@ -196,21 +215,48 @@
   background-color: transparent;
   cursor: pointer;
   z-index: 1;
+  min-height: 38px;
 }
 
 .card__icon-button:focus {
   outline: none;
 }
 
-.card__like-button {
-  width: 130px;
-  height: 38px;
-  border: 2px solid var(--accent-color);
+.card__icon-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  outline: 2px solid var(--accent-color);
+  outline-offset: -2px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.card__icon-button:focus-within::before {
+  opacity: 100;
+  z-index: 0;
+}
+
+.button {
+  position: relative;
   font-family: var(--font-accent);
   font-size: 14px;
-  position: relative;
-  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--accent-color);
   background-color: var(--main-background-color);
+  cursor: pointer;
+}
+
+.card__like-button {
+  width: 130px;
+  min-height: 38px;
+  padding: 9px 17px;
 }
 
 .card__like-button:focus {
@@ -246,19 +292,12 @@
 .footer {
   display: flex;
   justify-content: center;
-  margin: 50px auto;
 }
 
 .footer__button-save {
-  width: 335px;
-  height: 55px;
-  border: 2px solid var(--accent-color);
-  font-family: var(--font-accent);
-  font-size: 14px;
-  background: var(--main-background-color);
-  color: var(--accent-color);
-  cursor: pointer;
-  position: relative;
+  gap: 8px;
+  min-height: 55px;
+  padding: 15px 20px;
 }
 
 .footer__button-save:focus {
@@ -277,7 +316,6 @@
   width: 0;
   height: 100%;
   background-color: var(--accent-color);
-
   transition: width 0.5s ease-in-out;
 }
 
@@ -288,16 +326,10 @@
 .diskette {
   width: 21px;
   height: 21px;
-}
-
-.text-button-save {
   position: relative;
   z-index: 1;
-  mix-blend-mode: difference;
   color: var(--text-color);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  mix-blend-mode: difference;
 }
 
 dialog {
