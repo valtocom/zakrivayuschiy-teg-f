@@ -25,6 +25,7 @@
 
 .like-icon .main-body {
   fill: transparent;
+  transition: fill 0.3s linear;
 }
 
 .like-icon:hover .main-body {
@@ -60,6 +61,11 @@
 .like-icon.is-liked .main-body {
   transition: fill 0.3s 0.05s linear;
   fill: red;
+}
+
+.like-icon .contour {
+  transition: fill 0.1s linear;
+  fill: var(--accent-color);
 }
 
 .like-icon.is-liked .contour {

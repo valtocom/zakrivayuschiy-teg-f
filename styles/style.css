@@ -95,7 +95,7 @@
   width: 0%;
   height: 2px;
   background-color: var(--accent-color);
-  transition: width 0.5s ease-in-out;
+  transition: width 0.3s ease-in-out;
 }
 
 .theme-menu__button:focus-within {
@@ -253,21 +253,15 @@
   cursor: pointer;
 }
 
-.card__like-button {
-  width: 130px;
-  min-height: 38px;
-  padding: 9px 17px;
-}
-
-.card__like-button:focus {
+.button:focus {
   outline: none;
 }
 
-.card__like-button:focus-visible {
+.button:focus-visible {
   box-shadow: 2px 2px var(--accent-color);
 }
 
-.card__like-button::after {
+.button::after {
   content: "";
   position: absolute;
   left: 0;
@@ -278,8 +272,14 @@
   transition: width 0.5s ease-in-out;
 }
 
-.card__like-button:hover::after {
+.button:hover::after {
   width: 100%;
+}
+
+.card__like-button {
+  width: 130px;
+  min-height: 38px;
+  padding: 9px 17px;
 }
 
 .button__text {
@@ -296,31 +296,7 @@
 
 .footer__button-save {
   gap: 8px;
-  min-height: 55px;
   padding: 15px 20px;
-}
-
-.footer__button-save:focus {
-  outline: none;
-}
-
-.footer__button-save:focus-visible {
-  box-shadow: 2px 2px var(--accent-color);
-}
-
-.footer__button-save::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 100%;
-  background-color: var(--accent-color);
-  transition: width 0.5s ease-in-out;
-}
-
-.footer__button-save:hover::after {
-  width: 100%;
 }
 
 .diskette {
@@ -366,10 +342,6 @@ dialog {
 }
 
 .dialog-button {
-  border: 2px solid var(--accent-color);
-  background: var(--main-background-color);
-  color: var(--accent-color);
-  cursor: pointer;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -415,14 +387,19 @@ dialog::backdrop {
   filter: contrast(160%) blur(0.2rem);
 }
 
-@media (width <= 375px) {
+@media (width <= 376px) {
   .page {
     width: 100%;
     min-width: 375px;
   }
 
-  .text-button-save {
+  .footer__button-save {
     flex-direction: column;
+  }
+
+  .diskette {
+    width: 28px;
+    height: 28px;
   }
 
   .dialog {
